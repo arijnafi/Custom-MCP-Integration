@@ -1,0 +1,47 @@
+﻿Transkrip Rapat – Desain Integrasi MCP
+Tanggal: 22 April 2025
+Waktu: 10.00 – 11.30 WIB
+Platform: Zoom
+Peserta:
+- Rina Wijaya (Solution Architect)
+- Budi Santoso (Developer)
+- Ardi Pranata (Product Owner MCP)
+- Nia Lestari (Integration Specialist)
+- Dita Sari (Project Manager)
+
+
+[10:00 – Rapat dimulai]
+
+Dita: Oke, kita mulai ya. Fokus hari ini ke desain integrasi MCP ke backend. Ardi, bisa share dulu kebutuhannya?
+
+Ardi: Jadi, MCP butuh akses ke data pelanggan dari CRM, info tagihan dari billing system, dan juga fitur buat bikin tiket ke sistem ticketing. Targetnya semua data itu bisa ditarik dan dikirim lewat MCP, real-time.
+
+Rina: Jadi komunikasinya dua arah ya, data bisa masuk dan keluar dari MCP ke backend?
+
+Ardi: Iya, betul. Kalau user update data di MCP, harus otomatis masuk ke CRM juga.
+
+Rina: Aku udah bikin draft arsitektur integrasinya. MCP connect ke API Gateway, dari situ baru ke CRM, billing, dan ticketing. Kita pakai REST API semua, format data JSON.
+
+Nia: Endpoint awal yang dibutuhkan: 
+- /customer/profile
+- /billing/status
+- /ticket/create
+Autentikasi pakai OAuth 2.0, dan token di-manage MCP. Aku akan selesaikan dokumentasi API hari ini.
+
+Budi: Aku mulai setup environment testing minggu ini. Tapi aku perlu checklist dari tim integrasi soal dependensi backend-nya.
+
+Nia: Oke, aku buatkan checklist-nya juga hari ini.
+
+Rina: Aku akan share diagram arsitektur lengkap dan sequence flow-nya ke grup nanti siang. Sekalian aku minta tim infrastruktur review, biar bisa kita kunci desainnya.
+
+Dita: Untuk timeline, kita tentukan 5 minggu. Minggu pertama desain fix, minggu kedua dan ketiga untuk development dan unit test, keempat SIT, terakhir UAT dan Go Live.
+
+Budi: Noted, aku akan prioritaskan endpoint /ticket/create dulu, karena itu yang paling sering dipakai di MCP.
+
+Ardi: Mantap. Ticketing memang harus jalan duluan. Kalau bisa minggu depan udah bisa dicoba di dev.
+
+Rina: Bisa. Tapi aku butuh konfirmasi skema autentikasi juga dari tim security, biar nggak bentrok.
+
+Dita: Kalau gitu aku bantu follow up ke tim security hari ini.
+
+[11:30 – Rapat selesai]
